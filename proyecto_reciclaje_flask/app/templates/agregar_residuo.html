@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Agregar nuevo residuo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2>Agregar nuevo residuo</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST">
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre del residuo</label>
+        <input type="text" class="form-control" name="nombre" required>
+      </div>
+
+      <div class="mb-3">
+        <label for="descripcion" class="form-label">Descripción</label>
+        <textarea class="form-control" name="descripcion" rows="3" required></textarea>
+      </div>
+
+      <div class="mb-3">
+        <label for="id_bote" class="form-label">Selecciona el bote</label>
+        <select class="form-select" name="id_bote" required>
+          {% for id_bote, nombre, color in botes %}
+            <option value="{{ id_bote }}">{{ nombre }} ({{ color }})</option>
+          {% endfor %}
+        </select>
+      </div>
+
+      <button type="submit" class="btn btn-success">Agregar residuo</button>
+      <a href="{{ url_for('main.dashboard') }}" class="btn btn-link">Volver al dashboard</a>
+    </form>
+  </div>
+</body>
+</html>

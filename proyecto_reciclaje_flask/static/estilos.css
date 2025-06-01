@@ -1,0 +1,116 @@
+
+body {
+  background-color: #35e044;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+}
+
+
+h2, h5 {
+  font-weight: 700;
+  color: #006d5b;
+  text-align: center;
+}
+
+
+.btn-primary {
+  background-color: #009c7a;
+  border: none;
+}
+.btn-primary:hover {
+  background-color: #007b61;
+}
+
+
+.card {
+  border: 1px solid #d1e7dd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.table {
+  background-color: white;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+
+input, select, textarea {
+  border-radius: 8px !important;
+}
+
+
+.alert {
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+
+.container {
+  max-width: 900px;
+  margin-top: 40px;
+}
+
+.mt-5 {
+  margin-top: 3rem !important;
+}
+
+.buscar-container {
+  background-image: url("../img/fondo-eco.png");
+  background-size: cover;
+  background-position: center;
+  min-height: 100vh;
+  padding-top: 30px;
+  text-align: center;
+}
+
+.eco-header {
+  background-color: #00b56a;
+  color: white;
+  padding: 15px;
+  font-size: 1.6rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.buscador {
+  background-color: white;
+  border-radius: 25px;
+  padding: 15px 20px;
+  width: 90%;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+input[name="residuo"] {
+  border: 2px solid #009c7a;
+  border-radius: 20px;
+  padding: 8px 16px;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.btn-eco {
+  margin-top: 15px;
+  background-color: #009c7a;
+  color: white;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 20px;
+}
+
+.color-box {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  border: 1px solid #000;
+  margin-right: 5px;
+}
+
+.color-box.verde { background-color: green; }
+.color-box.azul { background-color: blue; }
+.color-box.amarillo { background-color: yellow; }
+.color-box.rojo { background-color: red; }

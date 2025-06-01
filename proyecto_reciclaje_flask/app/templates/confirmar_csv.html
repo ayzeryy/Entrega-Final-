@@ -1,0 +1,25 @@
+<h3>Vista previa de residuos a insertar</h3>
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Descripción</th>
+      <th>ID Bote</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for r in residuos %}
+    <tr>
+      <td>{{ r.nombre }}</td>
+      <td>{{ r.descripcion }}</td>
+      <td>{{ r.id_bote }}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<form method="POST" action="{{ url_for('main.confirmar_csv') }}">
+  <button type="submit" class="btn btn-success">Confirmar inserción</button>
+  <a href="{{ url_for('main.cargar_csv') }}" class="btn btn-secondary">Cancelar</a>
+</form>

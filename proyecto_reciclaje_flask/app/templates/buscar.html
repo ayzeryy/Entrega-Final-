@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Buscar residuo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+  <style>
+    .sidebar {
+      width: 220px;
+      background-color: #476a38;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      color: white;
+      padding: 20px 10px;
+      transition: background-color 0.3s ease;
+    }
+    .sidebar h4 {
+      color: #fff;
+      font-weight: 600;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .sidebar a {
+      display: block;
+      padding: 12px;
+      margin-bottom: 5px;
+      color: #000000;
+      text-decoration: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .sidebar a:hover {
+      background-color: #3c5830;
+      transform: translateX(5px);
+    }
+    .content {
+      margin-left: 240px;
+      padding: 40px;
+    }
+    .fade-in {
+      opacity: 0;
+      animation: fadeIn ease 1s;
+      animation-fill-mode: forwards;
+    }
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: translateY(10px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .btn-success {
+      transition: transform 0.2s ease;
+    }
+    .btn-success:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="sidebar">
+    <h4>ECO UVG+</h4>
+    <a href="{{ url_for('main.buscar') }}">Buscar residuo</a>
+    <a href="{{ url_for('main.ver_puntos') }}">Ver mis puntos</a>
+    <a href="{{ url_for('main.logout') }}" class="btn btn-light w-100 mt-4">Cerrar sesión</a>
+  </div>
+
+  <div class="content">
+    <h2 class="text-center mb-4 fade-in">Buscar residuo</h2>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }} fade-in">{{ message }}</div>
+      {% endfor %}
+    {% endwith %}
+
+    <form method="POST" class="text-center fade-in">
+      <label for="residuo" class="form-label fw-bold">Ingrese el nombre del residuo que desea desechar:</label>
+      <input type="text" name="residuo" class="form-control mb-3" placeholder="Ej. papel, botella, etc." required>
+      <button type="submit" class="btn btn-success">Buscar</button>
+    </form>
+
+    {% if resultado %}
+      <div class="alert alert-success mt-4 fade-in">
+        <p><strong>Descripción:</strong> {{ resultado.descripcion }}</p>
+        <p><strong>Bote:</strong> {{ resultado.bote }}</p>
+        <p>
+          <strong>Color del bote:</strong>
+          <span class="badge bg-{{ resultado.color }}">{{ resultado.color }}</span>
+          {{ resultado.color }}
+        </p>
+      </div>
+    {% endif %}
+  </div>
+</body>
+</html>
+
+

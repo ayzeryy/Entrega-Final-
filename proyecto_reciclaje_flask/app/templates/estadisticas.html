@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Estadísticas de Reciclaje</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/estilos.css') }}">
+
+  <style>
+    .grafica {
+      max-width: 500px;
+      margin: 20px auto;
+      text-align: center;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <h2>Estadísticas de uso (últimos 30 días)</h2>
+
+    <div class="grafica">
+      <h5>Proporción de residuos</h5>
+      <img src="{{ url_for('static', filename=pastel) }}" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="grafica">
+      <h5>Uso de botes</h5>
+      <img src="{{ url_for('static', filename=barras) }}" class="img-fluid rounded shadow">
+    </div>
+
+    <div class="mt-5">
+      <h5>Resumen tabular</h5>
+      <div class="row">
+        <div class="col-md-6">
+          <h6>Residuos</h6>
+          <ul class="list-group">
+            {% for nombre, cantidad in resumen.residuos.items() %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ nombre }}
+                <span class="badge bg-primary rounded-pill">{{ cantidad }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h6>Botes</h6>
+          <ul class="list-group">
+            {% for nombre, cantidad in resumen.botes.items() %}
+              <li class="list-group-item d-flex justify-content-between align-items-center">
+                {{ nombre }}
+                <span class="badge bg-success rounded-pill">{{ cantidad }}</span>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-4">
+      <a href="{{ url_for('main.dashboard') }}" class="btn btn-secondary">Volver al dashboard</a>
+    </div>
+  </div>
+</body>
+</html>
